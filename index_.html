@@ -16,16 +16,6 @@
     <link rel="stylesheet" href="plugs/parallaxPic3dreversal/css/style.css">
     <link rel="stylesheet" href="plugs/particles/style.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <!-- 百度统计 -->
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e3250739e64b39084d3e47088d181242";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
     <!-- <script src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script> -->
     <script src="lib/jquery.min.js"></script>
     <script>
@@ -40,6 +30,7 @@
             document.getElementById('homelink').click();
         }
     </script>
+
     <style>
         .slide-one .left img {
             width: 30%;
@@ -78,25 +69,23 @@
 
 <body>
 
-    <div id="menu-container" class="">
-        <div class="logo">
+    <ul id="menu" class="">
+        <li class="logo">
             <i class="fa fa-free-code-camp" aria-hidden="true"></i>
-        </div>
-        <ul id="menu">
-            <li data-menuanchor="page1" class="active">
-                <a id="homelink" href="#page1">首页</a>
-            </li>
-            <li data-menuanchor="page2">
-                <a href="#page2">专业技能</a>
-            </li>
-            <li data-menuanchor="page3">
-                <a href="#page3">案例简介</a>
-            </li>
-            <li data-menuanchor="page4">
-                <a href="#page4">联系方式</a>
-            </li>
-        </ul>
-    </div>
+        </li>
+        <li data-menuanchor="page1" class="active">
+            <a id="homelink" href="#page1">关于我</a>
+        </li>
+        <li data-menuanchor="page2">
+            <a href="#page2">专业技能</a>
+        </li>
+        <li data-menuanchor="page3">
+            <a href="#page3">案例简介</a>
+        </li>
+        <li data-menuanchor="page4">
+            <a href="#page4">联系方式</a>
+        </li>
+    </ul>
     <div id="fullpage">
         <div class="section" id="home">
             <div class="cicle">
@@ -106,26 +95,19 @@
                 <p id="demo">
                 </p>
                 <script>
+                    // var str = '我叫尹志辉,27岁,职业前端开发<br>本人因为兴趣自学的编程,对于编程开发有很多自己的思考,喜欢学习尝试新技术<br>为了能提升技术视野,我来到深圳,这里有青年精神和创新氛围,期待和牛人一起共事,学习优秀的开发经验';
                     // var str = '未来已来,只是尚未流行 — 凯文·凯利';
-                    var str1 = '想像力比知识更重要，因为知识是有限的，而想像力概括着世界上的一切，推动着进步，并且是知识进化的源泉 - 爱因斯坦';
-                    // var str2 = '有时候，正是那些人们认为的无用之人，成就了无人所成之事 - 克利斯朵夫'
-                    var text = str1;//[str1,str2][Math.round(Math.random())]
+                    // var str = '想像力比知识更重要，因为知识是有限的，而想像力概括着世界上的一切，推动着进步，并且是知识进化的源泉 - 爱因斯坦';
+                    var str1 = '对一个人来说，所期望的不是别的，而仅仅是他能全力以赴和献身于一种美好事业 - 爱因斯坦'
+                    var str2 = '与有趣的人，一起做很酷的事 - 佚名'
+                    var text = [str1,str2][Math.round(Math.random())]
                     var i = 0;
-                    var timer;
-                    var apiUrl = 'http://api.tianapi.com/txapi/dictum/';
-                    var key = 'ffe21faa0ff935f7ff9f897dcb065271';
-                    $.get(apiUrl,{key:key},function(data) {
-                        console.log('data: ',data);
-                        var news = data.newslist[0];
-                        if(data.code == 200 && news){
-                            text = news.content + ' - ' + news.mrname;
-                        }
-                        timer = setInterval(scrollit, 100);
-                    });
+                    var timer = setInterval('scrollit()', 100);
 
                     function scrollit() {
-                        $('#demo').html((text.slice(0, i++) + '  '));
+                        $('#demo').html((text.slice(0, i++) + ' '));
                         if (i > text.length) {
+                            // i = 0;
                             clearInterval(timer);
                         }
                     }
@@ -134,6 +116,7 @@
             <!-- 粒子插件 -->
             <![if !IE]>
             <div id="particles-js" style="min-height:600px;">
+
             </div>
             <!-- <script src="plugs/particles/particles.min.js"></script>
             <script src="plugs/particles/app.js"></script> -->
@@ -144,7 +127,7 @@
             <![if !IE]>
             <div class="wrapper">
                 <div class="cols">
-                    <div class="col_ action" ontouchstart="this.classList.toggle('hover');">
+                    <div class="col action" ontouchstart="this.classList.toggle('hover');">
                         <div class="container">
                             <div class="front" style="background-image: url(img/6.jpg)">
                                 <div class="inner">
@@ -158,12 +141,12 @@
                             </div>
                             <div class="back sec-native">
                                 <div class="inner">
-                                    <p>熟悉html5,css3新特性，能够处理主流浏览器兼容性问题</p>
+                                    <p>熟悉html5,能够书写语义合理,结构清晰,易维护的HTML结构.熟悉css3,理解css3盒子模型,能够处理主流浏览器兼容性问题.熟练使用原生js操作dom,ajax</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col_ action delay" ontouchstart="this.classList.toggle('hover');">
+                    <div class="col action delay" ontouchstart="this.classList.toggle('hover');">
                         <div class="container">
                             <div class="front" style="background-image: url(img/2.jpg)">
                                 <div class="inner">
@@ -177,12 +160,12 @@
                             </div>
                             <div class="back sec-framework">
                                 <div class="inner">
-                                    <p>熟练jq及bootstrap开发响应式页面</p>
+                                    <p>熟练使用jquery.熟悉bootstrap开发响应式页面.理解mvc开发思想,熟悉vue,react,angular等框架开发单页应用</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col_ action delay2" ontouchstart="this.classList.toggle('hover');">
+                    <div class="col action delay2" ontouchstart="this.classList.toggle('hover');">
                         <div class="container">
                             <div class="front" style="background-image: url(img/3.jpg)">
                                 <div class="inner">
@@ -196,12 +179,12 @@
                             </div>
                             <div class="back sec-build">
                                 <div class="inner">
-                                    <p>熟练原生js及es6的语法,熟悉webpack等构建应用</p>
+                                    <p>熟悉sass等css预处理工具的使用,熟悉gulp进行压缩,打包,熟悉webpack等构建应用</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col_ action delay3" ontouchstart="this.classList.toggle('hover');">
+                    <div class="col action delay3" ontouchstart="this.classList.toggle('hover');">
                         <div class="container">
                             <div class="front" style="background-image: url(img/4.jpg)">
                                 <div class="inner">
@@ -209,18 +192,18 @@
                                         <canvas class="circleChart_canvas" width="200" height="200" style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
                                         <p class="circleChart_text" style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
                                         </p>
-                                        <span>vue</span>
+                                        <span>jquery</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="back sec-server">
                                 <div class="inner">
-                                    <p>理解mvc开发思想,熟悉vue,react开发框架</p>
+                                    <p>理解面向对象的编程思想,熟悉requirejs模块化开发,会使用git做代码管理,了解es6的语法</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col_ action delay3" ontouchstart="this.classList.toggle('hover');">
+                    <div class="col action delay3" ontouchstart="this.classList.toggle('hover');">
                         <div class="container">
                             <div class="front" style="background-image: url(img/5.jpg)">
                                 <div class="inner">
@@ -228,17 +211,18 @@
                                         <canvas class="circleChart_canvas" width="200" height="200" style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
                                         <p class="circleChart_text" style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
                                         </p>
-                                        <span>小程序</span>
+                                        <span>bootstrap</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="back sec-server">
                                 <div class="inner">
-                                    <p>熟练原生小程序开发,了解nodejs及koa2框架搭建服务器</p>
+                                    <p>熟悉服务器端nodejs的使用,可以用express框架搭建简单的服务器,熟悉数据库mongodb的使用</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <![endif]>
@@ -296,10 +280,12 @@
                             <br>整个项目做了分包改造，对许多代码做了封装和优化
                         </p>
                         <h5>项目收获 :</h5>
-                        <p>熟悉了小程序的接口使用及发布上线流程
+                        <p>熟悉了小程序的接口使用及整个制作流程
                         </p>
                         <p>
-                            <h5>项目链接: 微信搜索阿卡索英语口语在线</h5>
+                            <h5>项目链接: 微信搜索天天口语秀
+                                <!-- <a href="https://gitee.com/acadsoc/daily_oral_show_v15">https://gitee.com/acadsoc/daily_oral_show_v15</a> -->
+                            </h5>
                         </p>
                     </div>
                 </div>
@@ -324,7 +310,7 @@
                         </p>
                         <p>
                             <h5>项目链接:
-                                <a href=" http://yinzhihui.site" target="_blank"> http://yinzhihui.site</a>
+                                <a href=" https://zhihuiyin.github.io/work/"> https://zhihuiyin.github.io/work/</a>
                             </h5>
                         </p>
                     </div>
@@ -349,7 +335,9 @@
                             <br>熟练模块化开发，封装
                         </p>
                         <p>
-                            <h5>项目链接: 微信搜索福豆趣玩</h5>
+                            <h5>项目链接: 微信搜索福豆趣玩
+                                <!-- <a href="http://xunlei.applinzi.com">http://xunlei.applinzi.com</a> -->
+                            </h5>
                         </p>
                     </div>
                 </div>
@@ -357,27 +345,28 @@
             <div class="slide">
                 <div class="slide-three">
                     <div class="left">
-                        <img src="./img/qqplayer.png" alt="">
+                        <img src="./img/blog.png" alt="">
                     </div>
                     <div class="right">
-                        <h4>QQ影音官网</h4>
-                        <h5>技术点 : </h5>html5,css3,jquery
+                        <h4>个人博客</h4>
+                        <h5>技术点 : </h5>html,css,bootstrap,jquery
                         <h5>项目描述 :</h5>
-                        <p>项目使用jquery实现页面交互，兼容ie8浏览器
+                        <p>个人项目,全部页面基于bootstrap.css构建
                             <br>在桌面和移动端都有较好的呈现
                         </p>
                         <h5>项目收获 :</h5>
                         <p>熟悉原生js、jQuery及git的使用
-                            <br>熟悉页面兼容性处理
+                            <br>熟悉应用bootstrap的页面布局
                         </p>
                         <p>
                             <h5>项目链接:
-                                <a href="https://player.qq.com/" target="_blank">https://player.qq.com/</a>
+                                <a href="https://zhihuiyin.github.io/">https://zhihuiyin.github.io/</a>
                             </h5>
                         </p>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="section active">
             <style>
@@ -401,39 +390,34 @@
                     <li class='animate delay write' data-text='15019457705@163.com'>
                         <a href="#" class="fa fa-envelope" aria-hidden="true"></a>
                     </li>
-                    <li class='animate delay2 write' data-text='https://github.com/zhihuiyin'>
+                    <li class='animate delay2 write' data-text='https://github.com/BlueFantast'>
                         <a href="#" class="fa fa-github fa-lg" aria-hidden="true"></a>
                     </li>
-                    <li class='animate delay3 write' data-text='2235045160'>
+                    <li class='animate delay3 write' data-text='wei_xin_chenchen'>
                         <a href="#" class="fa fa-weixin" aria-hidden="true"></a>
                     </li>
-                    <!-- <li class='animate delay4 write' data-text='2235045160'>
+                    <li class='animate delay4 write' data-text='2235045160'>
                         <a href="#" class="fa fa-qq" aria-hidden="true"></a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
             <script>
-                var flag = true;
                 $('.write').mouseenter(function () {
-                    if(flag){
-                        var $text = $(this).attr('data-text');
-                        var k = 0;
-                        flag = false;
-                        var writer = setInterval(function () {
-                            $('.content').text(($text.slice(0, k++) + ''));
-                            if (k == $text.length + 1) {
-                                clearInterval(writer);
-                                flag = true;
-                            }
-                        }, Math.round(Math.random() * 100));
-                    }
+                    var $text = $(this).attr('data-text');
+                    var k = 0;
+                    var writer = setInterval(function () {
+                        $('.content').text(($text.slice(0, k++) + ''));
+                        if (k == $text.length + 1) {
+                            clearInterval(writer);
+                        }
+                    }, Math.round(Math.random() * 100));
                 });
             </script>
             <div class="gohome">
                 <img src="./img/rocket1.png" alt="">
             </div>
             <div class="copyright">
-                <!-- © Yinzhihui. Design. -->
+                © Yinzhihui. Design.
             </div>
         </div>
     </div>
@@ -489,7 +473,7 @@
                         }
                     }
                     if (index == 4) {
-                        $('.contact ul').css('display', 'inline-block');
+                        $('.contact ul').css('display', 'block');
                         $('.contact ul li').addClass('zoomInUp');
                         // console.dir($('.contact ul li'));slideInUp,fadeInUp,zoomInUp
                         // $('.contact ul li').eq(0).addClass('slideInUp');
@@ -509,9 +493,6 @@
                     if (index == 4) {
                         $('.contact ul li').removeClass('zoomInUp');
                         $('.contact ul').css('display', 'none');
-                        setTimeout(() => {
-                            $('.content').html('');
-                        }, 1000);
                     }
                 },
 
@@ -541,7 +522,6 @@
         </script>
     <![endif]-->
     <script src="../commons/jsplugin.js"></script>
-    <!-- 友盟统计 -->
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278187545'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1278187545' type='text/javascript'%3E%3C/script%3E"));</script>
 </body>
+
 </html>
