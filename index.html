@@ -19,11 +19,11 @@
     <!-- 百度统计 -->
     <script>
         var _hmt = _hmt || [];
-        (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e3250739e64b39084d3e47088d181242";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?e3250739e64b39084d3e47088d181242";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
         })();
     </script>
     <!-- <script src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script> -->
@@ -36,9 +36,11 @@
     <link rel="stylesheet" href="./css/ie.css">
     <![endif]-->
     <script>
-        window.onload = function () {
-            document.getElementById('homelink').click();
-        }
+        //设置回到首页
+        // window.onload = function () {
+        //     document.getElementById('homelink').click();
+        //     location.hash = 'page1';
+        // }
     </script>
     <style>
         .slide-one .left img {
@@ -53,7 +55,7 @@
             margin-left: 18px;
         }
 
-        .slide-two .left img{
+        .slide-two .left img {
             width: 30%;
             float: left;
             margin-left: 18px;
@@ -63,6 +65,18 @@
             letter-spacing: .1rem;
             font-size: 2rem;
             line-height: 5rem;
+        }
+
+        .fp-tableCell {
+            position: relative;
+        }
+
+        .wrap-content {
+            margin: 5rem auto 0;
+        }
+
+        * {
+            /* border: 1px solid red !important; */
         }
     </style>
     <style id="__web-inspector-hide-shortcut-style__" type="text/css">
@@ -77,7 +91,6 @@
 </head>
 
 <body>
-
     <div id="menu-container" class="">
         <div class="logo">
             <i class="fa fa-free-code-camp" aria-hidden="true"></i>
@@ -109,16 +122,20 @@
                     // var str = '未来已来,只是尚未流行 — 凯文·凯利';
                     var str1 = '想像力比知识更重要，因为知识是有限的，而想像力概括着世界上的一切，推动着进步，并且是知识进化的源泉 - 爱因斯坦';
                     // var str2 = '有时候，正是那些人们认为的无用之人，成就了无人所成之事 - 克利斯朵夫'
-                    var text = str1;//[str1,str2][Math.round(Math.random())]
+                    var text = str1;
                     var i = 0;
                     var timer;
-                    var apiUrl = 'http://api.tianapi.com/txapi/dictum/';
-                    var key = 'ffe21faa0ff935f7ff9f897dcb065271';
-                    $.get(apiUrl,{key:key},function(data) {
-                        console.log('data: ',data);
+                    var apiUrl = 'https://api.tianapi.com/txapi/dictum/';
+                    var key = 'a56bb29b7c98c2922e73858a45a2caef';
+                    $.get(apiUrl, { key: key }, function (data) {
+                        console.log('data: ', data);
                         var news = data.newslist[0];
-                        if(data.code == 200 && news){
-                            text = news.content + ' - ' + news.mrname;
+                        if (data.code == 200 && news) {
+                            var content = news.content;
+                            if (content.length > 50) {
+                                content = content.slice(0, 50) + '...'
+                            }
+                            text = content + ` - ` + news.mrname;
                         }
                         timer = setInterval(scrollit, 100);
                     });
@@ -132,25 +149,27 @@
                 </script>
             </div>
             <!-- 粒子插件 -->
-            <![if !IE]>
+            <!-- <![if !IE]>
             <div id="particles-js" style="min-height:600px;">
             </div>
-            <!-- <script src="plugs/particles/particles.min.js"></script>
-            <script src="plugs/particles/app.js"></script> -->
+            <script src="plugs/particles/particles.min.js"></script>
+            <script src="plugs/particles/app.js"></script>
             <![endif]>
-            <div class="bg"></div>
+            <div class="bg"></div> -->
         </div>
         <div class="section" id="action">
             <![if !IE]>
             <div class="wrapper">
-                <div class="cols">
+                <div class="cols wrap-content">
                     <div class="col_ action" ontouchstart="this.classList.toggle('hover');">
                         <div class="container">
                             <div class="front" style="background-image: url(img/6.jpg)">
                                 <div class="inner">
                                     <div class="circleChart" id="2" data-value="0" style="position: relative;">
-                                        <canvas class="circleChart_canvas" width="200" height="200" style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
-                                        <p class="circleChart_text" style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
+                                        <canvas class="circleChart_canvas" width="200" height="200"
+                                            style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
+                                        <p class="circleChart_text"
+                                            style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
                                         </p>
                                         <span>html5</span>
                                     </div>
@@ -158,7 +177,7 @@
                             </div>
                             <div class="back sec-native">
                                 <div class="inner">
-                                    <p>熟悉html5,css3新特性，能够处理主流浏览器兼容性问题</p>
+                                    <p>熟悉html5新特性，常用localStorage等前端离线存储</p>
                                 </div>
                             </div>
                         </div>
@@ -168,8 +187,10 @@
                             <div class="front" style="background-image: url(img/2.jpg)">
                                 <div class="inner">
                                     <div class="circleChart" id="2" data-value="0" style="position: relative;">
-                                        <canvas class="circleChart_canvas" width="200" height="200" style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
-                                        <p class="circleChart_text" style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
+                                        <canvas class="circleChart_canvas" width="200" height="200"
+                                            style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
+                                        <p class="circleChart_text"
+                                            style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
                                         </p>
                                         <span>css3</span>
                                     </div>
@@ -177,7 +198,7 @@
                             </div>
                             <div class="back sec-framework">
                                 <div class="inner">
-                                    <p>熟练jq及bootstrap开发响应式页面</p>
+                                    <p>熟悉css3新特性，常用弹性布局和动画，了解sass</p>
                                 </div>
                             </div>
                         </div>
@@ -187,8 +208,10 @@
                             <div class="front" style="background-image: url(img/3.jpg)">
                                 <div class="inner">
                                     <div class="circleChart" id="2" data-value="0" style="position: relative;">
-                                        <canvas class="circleChart_canvas" width="200" height="200" style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
-                                        <p class="circleChart_text" style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
+                                        <canvas class="circleChart_canvas" width="200" height="200"
+                                            style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
+                                        <p class="circleChart_text"
+                                            style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
                                         </p>
                                         <span>javascript</span>
                                     </div>
@@ -196,7 +219,7 @@
                             </div>
                             <div class="back sec-build">
                                 <div class="inner">
-                                    <p>熟练原生js及es6的语法,熟悉webpack等构建应用</p>
+                                    <p>熟练原生js及es6的语法,理解闭包、原型链、事件循环机制等原理</p>
                                 </div>
                             </div>
                         </div>
@@ -206,8 +229,10 @@
                             <div class="front" style="background-image: url(img/4.jpg)">
                                 <div class="inner">
                                     <div class="circleChart" id="2" data-value="0" style="position: relative;">
-                                        <canvas class="circleChart_canvas" width="200" height="200" style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
-                                        <p class="circleChart_text" style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
+                                        <canvas class="circleChart_canvas" width="200" height="200"
+                                            style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
+                                        <p class="circleChart_text"
+                                            style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
                                         </p>
                                         <span>vue</span>
                                     </div>
@@ -215,7 +240,7 @@
                             </div>
                             <div class="back sec-server">
                                 <div class="inner">
-                                    <p>理解mvc开发思想,熟悉vue,react开发框架</p>
+                                    <p>熟悉vue开发项目，了解react</p>
                                 </div>
                             </div>
                         </div>
@@ -225,8 +250,10 @@
                             <div class="front" style="background-image: url(img/5.jpg)">
                                 <div class="inner">
                                     <div class="circleChart" id="2" data-value="0" style="position: relative;">
-                                        <canvas class="circleChart_canvas" width="200" height="200" style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
-                                        <p class="circleChart_text" style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
+                                        <canvas class="circleChart_canvas" width="200" height="200"
+                                            style="margin:1rem 0 0 1.2rem; display: block;"></canvas>
+                                        <p class="circleChart_text"
+                                            style="position: absolute; line-height: 170px; top: 0px; width: 100%; margin: 0px; padding: 0px; text-align: center; font-size: 28.5714px; font-weight: normal; font-family: sans-serif;">
                                         </p>
                                         <span>小程序</span>
                                     </div>
@@ -234,7 +261,7 @@
                             </div>
                             <div class="back sec-server">
                                 <div class="inner">
-                                    <p>熟练原生小程序开发,了解nodejs及koa2框架搭建服务器</p>
+                                    <p>有多个小程序开发经验,了解nodejs及express并利用其搭建简单服务器</p>
                                 </div>
                             </div>
                         </div>
@@ -299,7 +326,7 @@
                         <p>熟悉了小程序的接口使用及发布上线流程
                         </p>
                         <p>
-                            <h5>项目链接: 微信搜索阿卡索英语口语在线</h5>
+                        <h5>项目链接: 微信搜索阿卡索英语口语在线</h5>
                         </p>
                     </div>
                 </div>
@@ -323,9 +350,9 @@
                             <br>熟悉nodejs搭建简单服务器
                         </p>
                         <p>
-                            <h5>项目链接:
-                                <a href=" http://yinzhihui.site" target="_blank"> http://yinzhihui.site</a>
-                            </h5>
+                        <h5>项目链接:
+                            <a href=" http://yinzhihui.site" target="_blank"> http://yinzhihui.site</a>
+                        </h5>
                         </p>
                     </div>
                 </div>
@@ -349,7 +376,7 @@
                             <br>熟练模块化开发，封装
                         </p>
                         <p>
-                            <h5>项目链接: 微信搜索福豆趣玩</h5>
+                        <h5>项目链接: 微信搜索福豆趣玩</h5>
                         </p>
                     </div>
                 </div>
@@ -371,15 +398,15 @@
                             <br>熟悉页面兼容性处理
                         </p>
                         <p>
-                            <h5>项目链接:
-                                <a href="https://player.qq.com/" target="_blank">https://player.qq.com/</a>
-                            </h5>
+                        <h5>项目链接:
+                            <a href="https://player.qq.com/" target="_blank">https://player.qq.com/</a>
+                        </h5>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="section active">
+        <div class="section ">
             <style>
                 .content {
                     margin: 10rem auto 0rem;
@@ -395,10 +422,10 @@
             </div>
             <div class="contact">
                 <ul>
-                    <li class='animate write' data-text='15019457705'>
+                    <li class='animate write' data-text='18588983595'>
                         <a href="#" class="fa fa-mobile fa-lg" aria-hidden="true"></a>
                     </li>
-                    <li class='animate delay write' data-text='15019457705@163.com'>
+                    <li class='animate delay write' data-text='18588983595@163.com'>
                         <a href="#" class="fa fa-envelope" aria-hidden="true"></a>
                     </li>
                     <li class='animate delay2 write' data-text='https://github.com/zhihuiyin'>
@@ -407,15 +434,12 @@
                     <li class='animate delay3 write' data-text='2235045160'>
                         <a href="#" class="fa fa-weixin" aria-hidden="true"></a>
                     </li>
-                    <!-- <li class='animate delay4 write' data-text='2235045160'>
-                        <a href="#" class="fa fa-qq" aria-hidden="true"></a>
-                    </li> -->
                 </ul>
             </div>
             <script>
                 var flag = true;
                 $('.write').mouseenter(function () {
-                    if(flag){
+                    if (flag) {
                         var $text = $(this).attr('data-text');
                         var k = 0;
                         flag = false;
@@ -433,7 +457,6 @@
                 <img src="./img/rocket1.png" alt="">
             </div>
             <div class="copyright">
-                <!-- © Yinzhihui. Design. -->
             </div>
         </div>
     </div>
@@ -450,14 +473,12 @@
                 loopBottom: true,
                 anchors: ['page1', 'page2', 'page3', 'page4'],
                 menu: '#menu',
+                css3: true,
                 afterLoad: function (anchorLink, index) {
                     if (index == 1) {
                         $('#menu').removeClass('active');
-
                         $('#home p').addClass('animate');
-
                         $('.slide-one').hide();
-
                         $('.contact p').hide();
                         $('.active h1').removeClass('fadeIn');
                         $('.contact p').eq(0).removeClass('zoomInDown');
@@ -513,7 +534,7 @@
                             $('.content').html('');
                         }, 1000);
                     }
-                },
+                }
 
             });
             $('.gohome').click(function () {
@@ -542,6 +563,8 @@
     <![endif]-->
     <script src="../commons/jsplugin.js"></script>
     <!-- 友盟统计 -->
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278187545'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1278187545' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script
+        type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278187545'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1278187545' type='text/javascript'%3E%3C/script%3E"));</script>
 </body>
+
 </html>
